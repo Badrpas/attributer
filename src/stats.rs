@@ -12,6 +12,11 @@ pub struct Stats {
     id_counter: ID,
 }
 
+impl Default for Stats {
+    fn default() -> Self {
+        Self::new()
+    }
+}
 
 impl Stats {
 
@@ -65,9 +70,9 @@ impl Stats {
             attr.reset();
         }
         let mods = std::mem::take(&mut self.modifiers);
-            for (_id, modifier) in mods.iter() {
-                modifier.apply(self);
-            }
+        for (_id, modifier) in mods.iter() {
+            modifier.apply(self);
+        }
         self.modifiers = mods;
     }
 
